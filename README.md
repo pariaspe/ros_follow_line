@@ -1,17 +1,12 @@
-# ros-seminar
+# ROS Seminar
 
 ## Index
 - [Overview](#overview)
 - [First Steps](#first-steps)
 - [ROS Interfaces](#ros-interfaces)
 - [Troubleshooting](#troubleshooting)
-<!-- - [3. Base](#3-base)
-- [4. Extras](#4-extras)
-    - [4.1. Extra 1](#extra-1-vídeo-parte-base)
-    - [4.2. Extra 2](#extra-2-algoritmo-a)
-    - [4.3. Extra 3](#extra-3-control-interactivo-del-robot)
-    - [4.4. Extra 4](#extra-4-paredes)
-    - [4.5. Extra 5](#extra-5-vídeo-parte-extra) -->
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
 ## Overview
 
