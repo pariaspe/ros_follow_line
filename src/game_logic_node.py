@@ -24,7 +24,7 @@ class GameLogicNode(Node):
     """Game Logic Node
     """
 
-    def __init__(self, verbose=True) -> None:
+    def __init__(self, verbose=False) -> None:
         super().__init__('game_logic', namespace='game_logic')
         if verbose:
             self.get_logger().set_level(rclpy.logging.LoggingSeverity.DEBUG)
@@ -74,9 +74,11 @@ class GameLogicNode(Node):
         if self.state == states[2]:
             self.get_logger().debug(
                 f"{time.time() - self.init_time} - {self.f1_pose}", throttle_duration_sec=5)
-            if self.is_running_point(self.f1_pose) and (time.time() - self.init_time) > 10:
-                self.get_logger().info(
-                    f"LAP TIME: {time.time() - self.init_time}", throttle_duration_sec=10)
+            if self.is_running_point(self.f1_pose):
+                if (time.time() - self.init_time) > 10:
+                    self.get_logger().info(
+                        f"LAP TIME: {time.time() - self.init_time}", throttle_duration_sec=10)
+                self.init_time = time.time()  # new lap or reseting time if stopped
 
     def is_start_point(self, point: Point) -> bool:
         """Checks if the point is an valid position
