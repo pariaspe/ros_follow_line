@@ -1,20 +1,60 @@
 # ros-seminar
 
-## Setting the environment
+## Index
+- [Overview](#overview)
+- [First Steps](#first-steps)
+- [ROS Interfaces](#ros-interfaces)
+- [Troubleshooting](#troubleshooting)
+<!-- - [3. Base](#3-base)
+- [4. Extras](#4-extras)
+    - [4.1. Extra 1](#extra-1-vídeo-parte-base)
+    - [4.2. Extra 2](#extra-2-algoritmo-a)
+    - [4.3. Extra 3](#extra-3-control-interactivo-del-robot)
+    - [4.4. Extra 4](#extra-4-paredes)
+    - [4.5. Extra 5](#extra-5-vídeo-parte-extra) -->
+
+## Overview
+
+Programming a Formula 1 on a race track by following a red line in the center of the road with an RGB camera integrated into the F1 model.
+
+<img src="docs/imgs/img_1.png" width="450"/>
+<img src="docs/imgs/img_2.png" width="450"/>
+
+## First Steps
+
+### Setting up the environment
 ```bash
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$PWD/models
 export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:$PWD/worlds
 ```
 
-## Scenario launching
+### Launching
 ```bash
 gazebo worlds/simple_circuit.world
 ```
 
-<!-- ## Launching
+<!-- ### Launching
 ```bash
 roslaunch launch/simple_circuit.launch
 ``` -->
+
+## ROS Interfaces
+### Topics
+| Topic name | ROS msg | Description |
+| ---         | ---     | ---         |
+| `/cam/image_raw`   | `sensor_msgs/msg/Image`      | F1 image publisher       |
+| `/cam/camera_info` | `sensor_msgs/msg/CameraInfo` | F1 camera info publisher |
+| `/odom`            | `nav_msgs/msg/Odometry`      | F1 odometry publisher    |
+| `/cmd_vel`         | `geometry_msgs/msg/Twist`    | F1 commander publisher   |
+
+### Services
+| Service name | ROS msg | Description |
+| ---         | ---     | ---         |
+| `/game_logic/start` | `std_srvs/srv/Trigger` | Start Game Logic |
+| `/game_logic/stop`  | `std_srvs/srv/Trigger` | Stop Game Logic  |
+
+
+<!-- ### Parameters -->
 
 ## Troubleshooting
 
@@ -32,3 +72,9 @@ gzclient: /usr/include/boost/smart_ptr/shared_ptr.hpp:728: typename boost::detai
 ```bash
  . /usr/share/gazebo/setup.sh 
 ```
+
+## Acknowledgements
+The idea of the exercise, the models and the worlds files are original from [RoboticsAcademy](https://github.com/JdeRobot/RoboticsAcademy) ([JdeRobot](https://github.com/JdeRobot)), where the author is an active maintainer.
+
+## License
+The source code is released under [GPLv3](http://www.gnu.org/licenses/) license.
