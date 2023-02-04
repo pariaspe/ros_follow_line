@@ -28,11 +28,6 @@ export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:$PWD/worlds
 gazebo worlds/simple_circuit.world
 ```
 
-<!-- ### Launching
-```bash
-roslaunch launch/simple_circuit.launch
-``` -->
-
 ## ROS Interfaces
 ### Topics
 | Topic name | ROS msg | Description |
