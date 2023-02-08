@@ -9,5 +9,7 @@
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
     <arg name="verbose" default="false"/>
-  </include>  
+  </include>
+
+  <node name="game_logic_node" pkg="ros_follow_line" type="game_logic_node.py" output="screen"/>  
 </launch>

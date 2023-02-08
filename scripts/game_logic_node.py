@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 game_logic_node.py
 """
@@ -17,12 +18,12 @@ LOWER_Y = -11.0
 
 states = ["IDLE", "STARTED", "RUNNING"]
 
+
 class GameLogicNode:
     def __init__(self, standalone: bool = False, verbose: bool = False) -> None:
         if standalone:
             log_level = rospy.DEBUG if verbose else rospy.INFO
             rospy.init_node('game_logic', log_level=log_level)
-
 
         self.state = states[0]
         self.init_time = None
@@ -35,7 +36,6 @@ class GameLogicNode:
 
         rospy.loginfo("Game Logic Node started!")
 
-    
     def spin(self) -> None:
         rate = rospy.Rate(10)  # 10Hz
         while not rospy.is_shutdown():
@@ -48,12 +48,12 @@ class GameLogicNode:
             self.init_time = time.time()
 
         if self.state == states[2]:
-            rospy.logdebug_throttle(5, 
-                f"{time.time() - self.init_time} - {self.f1_pose}")
+            rospy.logdebug_throttle(5,
+                                    f"{time.time() - self.init_time} - {self.f1_pose}")
             if self.is_running_point(self.f1_pose):
                 if (time.time() - self.init_time) > 10:
-                    rospy.loginfo_throttle(10, 
-                        f"LAP TIME: {time.time() - self.init_time}")
+                    rospy.loginfo_throttle(10,
+                                           f"LAP TIME: {time.time() - self.init_time}")
                 self.init_time = time.time()  # new lap or reseting time if stopped
 
     def is_start_point(self, point: Point) -> bool:
@@ -89,6 +89,7 @@ class GameLogicNode:
         self.state = states[0]  # IDLE
         self.init_time = None
         return TriggerResponse(True, "")
+
 
 if __name__ == "__main__":
     try:
