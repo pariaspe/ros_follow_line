@@ -1,5 +1,5 @@
-<?xml version='1.0'?>
-<sdf version="1.4">
+<?xml version="1.0"?>
+<sdf version="1.6">
 <model name="f1_renault_dual_cam">
   <pose>0 0 0 0 0 0</pose>
   <static>false</static>
@@ -8,7 +8,7 @@
         <uri>model://f1_renault</uri>
     </include>
 
-    <link name='camera_top_body_left'>
+    <link name='camera_left_link'>
       <pose>0.45000 0.040000 0.1000000 0.000000 -0.000000 0.0000000</pose>
       <inertial>
         <mass>2</mass>
@@ -85,7 +85,7 @@
       <gravity>1</gravity>
     </link>
 
-    <link name='camera_top_body_right'>
+    <link name='camera_right_link'>
       <pose>0.45000 -0.040000 0.1000000 0.000000 -0.000000 0.0000000</pose>
       <inertial>
         <mass>2</mass>
@@ -162,19 +162,19 @@
       <gravity>1</gravity>
     </link>
 
-    <joint type="revolute" name="camera_left">
+    <joint type="fixed" name="camera_left_joint">
       <pose>0 0 0 0 0 0</pose>
-      <child>camera_top_body_left</child>
-      <parent>f1</parent>
+      <child>camera_left_link</child>
+      <parent>f1_renault::f1_link</parent>
       <axis>
         <xyz>0 0 0</xyz>
       </axis>
     </joint>
 
-    <joint type="revolute" name="camera_right">
+    <joint type="fixed" name="camera_right_joint">
       <pose>0 0 0 0 0 0</pose>
-      <child>camera_top_body_right</child>
-      <parent>f1</parent>
+      <child>camera_right_link</child>
+      <parent>f1_renault::f1_link</parent>
       <axis>
         <xyz>0 0 0</xyz>
       </axis>

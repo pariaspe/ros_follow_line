@@ -1,5 +1,5 @@
-<?xml version='1.0'?>
-<sdf version="1.4">
+<?xml version="1.0" ?>
+<sdf version="1.6">
 <model name="f1_renault_cam">
   <pose>0 0 0 0 0 0</pose>
   <static>false</static>
@@ -8,7 +8,7 @@
         <uri>model://f1_renault</uri>
     </include>
 
-    <link name='camera_top_body'>
+    <link name='camera_link'>
       <pose>0.45000 0.00000 0.1000000 0.000000 -0.000000 0.0000000</pose>
       <inertial>
         <mass>2</mass>
@@ -39,10 +39,11 @@
         <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>0.0</updateRate>
-          <cameraName>F1ROS/camera</cameraName>
+          <cameraName>camera</cameraName>
+          <robotNamespace>F1ROS</robotNamespace>
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-          <frameName>camera_top_body</frameName>
+          <frameName>camera_link</frameName>
           <hackBaseline>0.07</hackBaseline>
           <distortionK1>0.0</distortionK1>
           <distortionK2>0.0</distortionK2>
@@ -85,13 +86,9 @@
       <gravity>1</gravity>
     </link>
 
-    <joint type="revolute" name="camera">
-      <pose>0 0 0 0 0 0</pose>
-      <child>camera_top_body</child>
-      <parent>f1</parent>
-      <axis>
-        <xyz>0 0 0</xyz>
-      </axis>
+    <joint type="fixed" name="camera_joint">
+      <parent>f1_renault::f1_link</parent>
+      <child>camera_link</child>
     </joint>
 
   </model>
