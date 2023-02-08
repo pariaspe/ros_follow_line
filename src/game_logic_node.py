@@ -12,6 +12,8 @@ from geometry_msgs.msg import Point
 from nav_msgs.msg import Odometry
 from std_srvs.srv import Trigger
 
+from tools import _
+
 UPPER_X = 55.0
 LOWER_X = 52.0
 UPPER_Y = -10.7
@@ -78,6 +80,8 @@ class GameLogicNode(Node):
                 if (time.time() - self.init_time) > 10:
                     self.get_logger().info(
                         f"LAP TIME: {time.time() - self.init_time}", throttle_duration_sec=10)
+                    self.get_logger().info(
+                        f"HASH CODE: {_(int(time.time() - self.init_time)).decode('utf-8')}", throttle_duration_sec=10)
                 self.init_time = time.time()  # new lap or reseting time if stopped
 
     def is_start_point(self, point: Point) -> bool:
