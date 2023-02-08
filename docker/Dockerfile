@@ -7,9 +7,10 @@ RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb
     && wget https://packages.osrfoundation.org/gazebo.key -O - | apt-key add -
 RUN apt-get update \
     && apt-get install -y \
-    gazebo11 \
-    ros-noetic-gazebo-ros \
-    ros-noetic-gazebo-plugins
+        gazebo11 \
+        python3-catkin-tools \
+        ros-noetic-gazebo-ros \
+        ros-noetic-gazebo-plugins
 
 ENV USERNAME user
 
@@ -20,15 +21,18 @@ RUN usermod  --uid 1000 $USERNAME && \
 USER $USERNAME
 WORKDIR /home/${USERNAME}
 
-RUN mkdir noetic_ws
-COPY models ./noetic_ws/models/
-COPY worlds ./noetic_ws/worlds/
-COPY launch ./noetic_ws/launch/
-COPY docker/entrypoint.bash .
+RUN mkdir -p noetic_ws/src/ros_follow_line
+COPY . ./noetic_ws/src/ros_follow_line
 
-ENV GAZEBO_MODEL_PATH /home/${USERNAME}/noetic_ws/models:/home/${USERNAME}/noetic_ws/worlds
-ENV GAZEBO_RESOURCE_PATH /home/${USERNAME}/noetic_ws/launch:/home/${USERNAME}/noetic_ws/worlds
+ENV ROS_WORKSPACE=/home/${USERNAME}/noetic_ws
+WORKDIR /home/${USERNAME}/noetic_ws
+RUN catkin init
+RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; catkin build'
+
 ENV DISPLAY :0
+
+WORKDIR /home/${USERNAME}
+COPY docker/entrypoint.bash .
 
 ENTRYPOINT ["./entrypoint.bash"]
 CMD ["bash"]

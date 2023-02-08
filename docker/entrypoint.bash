@@ -3,5 +3,5 @@ set -e
 
 # setup ros environment
 source "/opt/ros/$ROS_DISTRO/setup.bash" --
-source "/usr/share/gazebo/setup.sh"
+source "$HOME/noetic_ws/devel/setup.bash"
 exec "$@"
