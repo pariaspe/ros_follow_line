@@ -57,7 +57,7 @@ class GameLogicNode:
                     rospy.loginfo_throttle(10,
                                            f"LAP TIME: {time.time() - self.init_time}")
                     rospy.loginfo_throttle(10,
-                                           f"HASH CODE: {_(time.time() - self.init_time)}")
+                                           f"HASH CODE: {_(int(time.time() - self.init_time))}")
                 self.init_time = time.time()  # new lap or reseting time if stopped
 
     def is_start_point(self, point: Point) -> bool:
