@@ -28,14 +28,30 @@ export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:$PWD/worlds
 roslaunch launch/simple_circuit.launch
 ```
 
+### Try it!
+```bash
+rostopic pub /F1ROS/cmd_vel geometry_msgs/Twist "linear:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.2"
+```
+
+```bash
+rosrun rqt_image_view rqt_image_view
+```
+
 ## ROS Interfaces
 ### Topics
 | Topic name | ROS msg | Description |
 | ---         | ---     | ---         |
-| `/cam/image_raw`   | `sensor_msgs/msg/Image`      | F1 image publisher       |
-| `/cam/camera_info` | `sensor_msgs/msg/CameraInfo` | F1 camera info publisher |
-| `/odom`            | `nav_msgs/msg/Odometry`      | F1 odometry publisher    |
-| `/cmd_vel`         | `geometry_msgs/msg/Twist`    | F1 commander publisher   |
+| `/F1ROS/camera/image_raw`   | `sensor_msgs/msg/Image`      | F1 image publisher       |
+| `/F1ROS/camera/camera_info` | `sensor_msgs/msg/CameraInfo` | F1 camera info publisher |
+| `/F1ROS/odom`               | `nav_msgs/msg/Odometry`      | F1 odometry publisher    |
+| `/F1ROS/cmd_vel`            | `geometry_msgs/msg/Twist`    | F1 commander publisher   |
 
 ### Services
 | Service name | ROS msg | Description |

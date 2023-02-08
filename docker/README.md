@@ -16,3 +16,15 @@ On host machine:
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$PWD/models
 GAZEBO_MASTER_URI=http://127.0.0.1:11345 gzclient --verbose
 ```
+
+```bash
+docker exec -it <container> bash
+rostopic pub /F1ROS/cmd_vel geometry_msgs/Twist "linear:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.0"
+```
