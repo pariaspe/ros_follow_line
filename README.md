@@ -19,21 +19,20 @@ Programming a Formula 1 on a race track by following a red line in the center of
 
 ### Clone the repository
 ```bash
-cd && mkdir -p seminar_ws/src
-cd seminar_ws/src && git clone https://github.com/pariaspe/ros-seminar.git
+mkdir -p $HOME/seminar_ws/src
+cd $HOME/seminar_ws/src && git clone https://github.com/pariaspe/ros_follow_line.git
 ```
 
-### Compile
+### Building
 ```bash
-cd ~/seminar_ws
-catkin build
+cd ~/seminar_ws && catkin build
 ```
 
-<!-- ### Setting up the environment
+### Setting up the environment
 ```bash
-export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$PWD/models
-export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:$PWD/worlds
-``` -->
+export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$HOME/seminar_ws/src/ros_follow_line/models
+export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:$HOME/seminar_ws/src/ros_follow_line/worlds
+```
 
 ### Launching
 ```bash
