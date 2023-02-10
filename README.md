@@ -17,6 +17,11 @@ Programming a Formula 1 on a race track by following a red line in the center of
 
 ## First Steps
 
+### Deps
+```bash
+sudo apt install python3-catkin-tools
+```
+
 ### Clone the repository
 ```bash
 mkdir -p $HOME/seminar_ws/src
