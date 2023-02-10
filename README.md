@@ -36,7 +36,7 @@ export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:$HOME/seminar_ws/src/ros_follo
 
 ### Launching
 ```bash
-source $HOME/seminar_ws/src/devel/setup.bash
+source $HOME/seminar_ws/devel/setup.bash
 roslaunch ros_follow_line simple_circuit.launch
 ```
 
