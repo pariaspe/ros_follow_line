@@ -17,15 +17,27 @@ Programming a Formula 1 on a race track by following a red line in the center of
 
 ## First Steps
 
-### Setting up the environment
+### Clone the repository
+```bash
+cd && mkdir -p seminar_ws/src
+cd seminar_ws/src && git clone https://github.com/pariaspe/ros-seminar.git
+```
+
+### Compile
+```bash
+cd ~/seminar_ws
+catkin build
+```
+
+<!-- ### Setting up the environment
 ```bash
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$PWD/models
 export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:$PWD/worlds
-```
+``` -->
 
 ### Launching
 ```bash
-roslaunch launch/simple_circuit.launch
+roslaunch ros_follow_line simple_circuit.launch
 ```
 
 ### Try it!
