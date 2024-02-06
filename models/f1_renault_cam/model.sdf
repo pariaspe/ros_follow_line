@@ -21,7 +21,7 @@
           <izz>1.000000</izz>
         </inertia>
       </inertial>
-      <sensor name='cam_f1' type='camera'>
+      <sensor name='cam' type='camera'>
         <pose>0.000000 0.000000 0.000000 0.000000 0.00000 0.00000</pose>
         <update_rate>20.000000</update_rate>
         <camera name='cam'>
@@ -40,7 +40,6 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>0.0</updateRate>
           <cameraName>camera</cameraName>
-          <robotNamespace>F1ROS</robotNamespace>
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
           <frameName>camera_link</frameName>

@@ -36,7 +36,6 @@
 
     <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
       <cmdTimeout>-1.0</cmdTimeout>
-      <robotNamespace>F1ROS</robotNamespace>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
