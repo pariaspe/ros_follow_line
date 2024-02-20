@@ -80,7 +80,7 @@ def generate_launch_description():
             description='Path to world file.'),
         DeclareLaunchArgument(
             'game_logic',
-            default_value='false',
+            default_value='true',
             choices=['true', 'false'],
             description='Launch Game Logic.'),
         # Launch processes
