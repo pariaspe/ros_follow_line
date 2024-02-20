@@ -36,6 +36,7 @@ __copyright__ = "Copyright (c) 2024 Universidad Politécnica de Madrid"
 __license__ = "BSD-3-Clause"
 
 import os
+from random import randint
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription, LaunchContext
 from launch.actions import DeclareLaunchArgument, OpaqueFunction, \
@@ -62,8 +63,9 @@ def launch_simulation(context: LaunchContext):
 
 def generate_launch_description():
     """Generate Launch description with Gazebo11"""
+    world_options = {0: 'renault', 1: 'aston_martin', 2: 'redbull'}
     world_path = os.path.join(get_package_share_directory(
-        'ros_follow_line'), 'worlds', 'simple_circuit.world')
+        'ros_follow_line'), 'worlds', f'simple_circuit_{world_options[randint(0, 2)]}.world')
 
     return LaunchDescription([
         # Launch Arguments
