@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+<model name="f1_redbull_cam">
+  <pose>0 0 0 0 0 0</pose>
+  <static>false</static>
+
+    <include merge="true">
+        <uri>model://f1_redbull</uri>
+    </include>
+
+    <link name='camera_link'>
+      <pose>0.45000 0.00000 0.1000000 0.000000 -0.000000 0.0000000</pose>
+      <inertial>
+        <mass>2</mass>
+        <inertia>
+          <ixx>1.000000</ixx>
+          <ixy>0.000000</ixy>
+          <ixz>0.000000</ixz>
+          <iyy>1.000000</iyy>
+          <iyz>0.000000</iyz>
+          <izz>1.000000</izz>
+        </inertia>
+      </inertial>
+      <sensor name='cam' type='camera'>
+        <pose>0.000000 0.000000 0.000000 0.000000 0.00000 0.00000</pose>
+        <update_rate>20.000000</update_rate>
+        <camera name='cam'>
+          <horizontal_fov>1.570000</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.100000</near>
+            <far>15.000000</far>
+          </clip>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>camera</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+      </sensor>
+      <visual name='visual'>
+        <geometry>
+          <sphere>
+            <radius>.005</radius>
+          </sphere>
+        </geometry>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <box>
+            <size>0.100000 0.100000 0.100000</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100000.000000</mu>
+              <mu2>100000.000000</mu2>
+              <slip1>0.000000</slip1>
+              <slip2>0.000000</slip2>
+            </ode>
+          </friction>
+        </surface>
+        <max_contacts>10</max_contacts>
+      </collision>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+    </link>
+
+    <joint type="fixed" name="camera_joint">
+      <parent>f1_redbull::f1_link</parent>
+      <child>camera_link</child>
+    </joint>
+
+  </model>
+</sdf>
