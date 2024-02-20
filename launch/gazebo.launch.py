@@ -38,14 +38,15 @@ __license__ = "BSD-3-Clause"
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription, LaunchContext
-from launch.actions import DeclareLaunchArgument, OpaqueFunction
-from launch.actions import ExecuteProcess
+from launch.actions import DeclareLaunchArgument, OpaqueFunction, \
+    IncludeLaunchDescription, ExecuteProcess, GroupAction
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
+from launch.conditions import IfCondition
 
 
 def launch_simulation(context: LaunchContext):
-    """Launch the simulation
-    """
+    """Launch the simulation"""
     verbose = LaunchConfiguration('verbose').perform(context)
     verbose = verbose.lower() in ['true', 't', 'yes', 'y', '1']
     verbose = ['--verbose'] if verbose else []
@@ -60,8 +61,7 @@ def launch_simulation(context: LaunchContext):
 
 
 def generate_launch_description():
-    """Generate Launch description with GzSim launch + Models Spawning + World/Object bridges
-    """
+    """Generate Launch description with Gazebo11"""
     world_path = os.path.join(get_package_share_directory(
         'ros_follow_line'), 'worlds', 'simple_circuit.world')
 
@@ -76,6 +76,24 @@ def generate_launch_description():
             'world',
             default_value=world_path,
             description='Path to world file.'),
+        DeclareLaunchArgument(
+            'game_logic',
+            default_value='false',
+            choices=['true', 'false'],
+            description='Launch Game Logic.'),
         # Launch processes
-        OpaqueFunction(function=launch_simulation)
+        OpaqueFunction(function=launch_simulation),
+        GroupAction(
+            condition=IfCondition(LaunchConfiguration('game_logic')),
+            actions=[
+                IncludeLaunchDescription(
+                    PythonLaunchDescriptionSource([os.path.join(
+                        get_package_share_directory('ros_follow_line'), 'launch'),
+                        '/game_logic.launch.py']),
+                    launch_arguments={
+                        'verbose': LaunchConfiguration('verbose')
+                    }.items()
+                )
+            ]
+        )
     ])
