@@ -48,11 +48,11 @@ def launch_simulation(context: LaunchContext):
     """
     verbose = LaunchConfiguration('verbose').perform(context)
     verbose = verbose.lower() in ['true', 't', 'yes', 'y', '1']
-    verbose = '--verbose' if verbose else ''
+    verbose = ['--verbose'] if verbose else []
 
     world_path = LaunchConfiguration('world').perform(context)
     gazebo11 = ExecuteProcess(
-        cmd=['gazebo', verbose, world_path],
+        cmd=['gazebo'] + verbose + [world_path],
         name='gazebo11',
         output='screen',
     )
