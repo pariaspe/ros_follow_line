@@ -37,6 +37,7 @@ There are two python modules that can be used to help the students to develop th
 Both can be found in the `ros_follow_line` package and imported in your node.
 
 ```python
+from cv_bridge import CvBridge
 from ros_follow_line.controller_pid import PID
 from ros_follow_line.color_filter import red_filter, get_centroid
 
