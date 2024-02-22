@@ -49,7 +49,7 @@ centroid = get_centroid(img)
 ##
 controller = PID(k_p=1.0, k_d=1.0)
 controller.setpoint = 0.0
-output_vel = linear_controller.update(error)
+output_vel = controller.update(error)
 ```
 
 ## First Steps
