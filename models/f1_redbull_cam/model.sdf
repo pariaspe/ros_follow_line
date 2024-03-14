@@ -6,6 +6,7 @@
 
     <include merge="true">
         <uri>model://f1_redbull</uri>
+        <name>f1_redbull</name>
     </include>
 
     <link name='camera_link'>

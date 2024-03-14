@@ -6,6 +6,7 @@
 
     <include merge="true">
         <uri>model://f1_renault</uri>
+        <name>f1_renault</name>
     </include>
 
     <link name='camera_link'>
