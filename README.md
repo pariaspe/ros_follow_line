@@ -1,4 +1,8 @@
-# ROS Seminar
+# ROS 2 Seminar
+
+- **Máster Universitario en Automática y Robótica** (Universidad Politécnica de Madrid)
+- **Year**: 2024/25
+- **Author**: Pedro Arias-Perez (@pariaspe)
 
 ## Index
 - [Overview](#overview)
