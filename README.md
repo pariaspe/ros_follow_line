@@ -1,5 +1,6 @@
 # ROS 2 Seminar
 
+- **Course**: "Curso de ROS 2"
 - **Máster Universitario en Automática y Robótica** (Universidad Politécnica de Madrid)
 - **Year**: 2024/25
 - **Author**: Pedro Arias-Perez (@pariaspe)
@@ -122,6 +123,14 @@ sudo apt-get update
 sudo apt-get install gz-harmonic
 sudo apt-get install ros-humble-ros-gzharmonic
 ```
+
+## Some helpfull links:
+
+- [OpenCV documentation](https://docs.opencv.org/4.5.4/index.html)
+- From ROS image to OpenCV image: [CvBridge](https://wiki.ros.org/cv_bridge/Tutorials/ConvertingBetweenROSImagesAndOpenCVImagesPython)
+- Basic [color filter](https://pyimagesearch.com/2014/08/04/opencv-python-color-detection/)
+- `rclpy` [tutorials](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html)
+- [ROS msgs](https://wiki.ros.org/common_msgs?distro=noetic)
 
 ## Acknowledgements
 The idea of the exercise, the models and the worlds files are original from [RoboticsAcademy](https://github.com/JdeRobot/RoboticsAcademy) ([JdeRobot](https://github.com/JdeRobot)), where the author is an active maintainer.
